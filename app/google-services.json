@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "807751419703",
+    "firebase_url": "https://testsecurity-62d7d.firebaseio.com",
+    "project_id": "testsecurity-62d7d",
+    "storage_bucket": "testsecurity-62d7d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:807751419703:android:36bfa4dfc78e5941",
+        "android_client_info": {
+          "package_name": "security.test.com.testsecurity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "807751419703-m3kqruf9jv0e7cpdq3b250b65tl000n4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnN26m-bCPPBbQx3MeBSTYhpQm_cbUID4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
