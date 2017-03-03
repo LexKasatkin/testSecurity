@@ -12,8 +12,7 @@
         android:textSize="30sp"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
-        android:text="Authorize please"/>
+        android:layout_marginTop="40dp" android:text="@string/welcome_string"/>
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/auth_button"
