@@ -2,6 +2,7 @@ package security.test.com.testsecurity;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 /**
@@ -77,6 +79,8 @@ public class QuestionFragment extends android.support.v4.app.Fragment {
         rg = (RadioGroup) v.findViewById(R.id.radio_group);
         btnNext= (ImageButton) v.findViewById(R.id.btnNext);
         btnBack=(ImageButton)v.findViewById(R.id.btnBack);
+        Security security=new Security();
+        ArrayList<Integer> massive=security.getSecurityMassive(4);
         InputStream is = getResources().openRawResource(R.raw.test);
         final ListQuestions listQuestions=new ListQuestions(is);
         tvQuestion.setText(listQuestions.questions.get(numberQuestion).questionstring);
