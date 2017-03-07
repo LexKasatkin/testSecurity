@@ -5,28 +5,6 @@
              tools:context="security.test.com.testsecurity.QuestionFragment" android:padding="16dp">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|top"
-        android:id="@+id/tvQuestion" android:textSize="19sp"
-        android:textColor="@color/common_google_signin_btn_text_light_pressed"/>
-
-    <RadioGroup
-
-        android:id="@+id/radio_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-
-    </RadioGroup>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,10 +17,41 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnNext" android:layout_gravity="right|bottom"
         android:src="@drawable/right"/>
-    <ImageButton
+    <!--<ImageButton-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/btnBack" android:layout_gravity="left|bottom"-->
+        <!--android:src="@drawable/ic_keyboard_arrow_left_black_24dp"/>-->
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content" android:orientation="vertical"
+                  android:layout_gravity="center_horizontal|top">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvAnswerBool" android:layout_gravity="left|top"
+            android:textSize="15sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/tvQuestion" android:textSize="15sp"
+            android:textColor="@color/common_google_signin_btn_text_light_pressed"/>
+        <RadioGroup
+
+        android:id="@+id/radio_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnBack" android:layout_gravity="left|bottom"
-        android:src="@drawable/ic_keyboard_arrow_left_black_24dp"/>
+
+
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+
+    </RadioGroup>
+    </LinearLayout>
 
 </FrameLayout>

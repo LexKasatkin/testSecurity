@@ -40,6 +40,7 @@ public class QuestionFragment extends android.support.v4.app.Fragment {
     int rightAnswer;
     Button btnAnswer;
     ImageButton btnNext;
+    TextView tvAnswerBool;
     ImageButton btnBack;
 
     public QuestionFragment() {
@@ -78,7 +79,9 @@ public class QuestionFragment extends android.support.v4.app.Fragment {
         tvQuestion=(TextView)v.findViewById(R.id.tvQuestion);
         rg = (RadioGroup) v.findViewById(R.id.radio_group);
         btnNext= (ImageButton) v.findViewById(R.id.btnNext);
-        btnBack=(ImageButton)v.findViewById(R.id.btnBack);
+        tvAnswerBool=(TextView)v.findViewById(R.id.tvAnswerBool);
+//        btnBack=(ImageButton)v.findViewById(R.id.btnBack);
+        btnAnswer=(Button)v.findViewById(R.id.btnAnswer);
         Security security=new Security();
         ArrayList<Integer> massive=security.getSecurityMassive(4);
         InputStream is = getResources().openRawResource(R.raw.test);
@@ -93,12 +96,14 @@ public class QuestionFragment extends android.support.v4.app.Fragment {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                btnAnswer.setVisibility(View.VISIBLE);
                 if(numberQuestion+1==listQuestions.questions.size()){
                     btnNext.setVisibility(View.INVISIBLE);
                 } else if(numberQuestion!=1){
-                    btnBack.setVisibility(View.VISIBLE);
+//                    btnBack.setVisibility(View.VISIBLE);
                 }
                 if (numberQuestion < listQuestions.questions.size()) {
+                    tvAnswerBool.setText("");
                     rg.removeAllViews();
                     tvQuestion.setText(listQuestions.questions.get(numberQuestion).questionstring);
                     ArrayList<String> s = new ArrayList<String>();
@@ -113,27 +118,44 @@ public class QuestionFragment extends android.support.v4.app.Fragment {
                 }
             }
         });
-        btnBack.setOnClickListener(new View.OnClickListener() {
+//        btnBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(numberQuestion==1){
+//                    btnBack.setVisibility(View.INVISIBLE);
+//                }else if(numberQuestion+1!=listQuestions.questions.size()){
+//                    btnNext.setVisibility(View.VISIBLE);
+//                }
+//                numberQuestion--;
+//                if (numberQuestion < listQuestions.questions.size()) {
+//                    tvAnswerBool.setText("");
+//                    rg.removeAllViews();
+//                    tvQuestion.setText(listQuestions.questions.get(numberQuestion).questionstring);
+//                    ArrayList<String> s = new ArrayList<String>();
+//                    for (int i = 0; i < listQuestions.questions.get(numberQuestion).answers.size(); i++) {
+//                        s.add(listQuestions.questions.get(numberQuestion).answers.get(i).answerstring);
+//                        if(listQuestions.questions.get(numberQuestion).answers.get(i).answerbool){
+//                            rightAnswer=i;
+//                        }
+//                    }
+//                    showRadioButtonDialog(s, v);
+//                }
+//            }
+//        });
+
+        btnAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(numberQuestion==1){
-                    btnBack.setVisibility(View.INVISIBLE);
-                }else if(numberQuestion+1!=listQuestions.questions.size()){
-                    btnNext.setVisibility(View.VISIBLE);
+                btnAnswer.setVisibility(View.INVISIBLE);
+                int radioButtonID = rg.getCheckedRadioButtonId();
+                View radioButton = rg.findViewById(radioButtonID);
+                int idx = rg.indexOfChild(radioButton);
+                if(listQuestions.questions.get(numberQuestion-1).answers.get(idx).answerbool){
+                    tvAnswerBool.setText("Верно");
+                }else {
+                    tvAnswerBool.setText("Неверно");
                 }
-                numberQuestion--;
-                if (numberQuestion < listQuestions.questions.size()) {
-                    rg.removeAllViews();
-                    tvQuestion.setText(listQuestions.questions.get(numberQuestion).questionstring);
-                    ArrayList<String> s = new ArrayList<String>();
-                    for (int i = 0; i < listQuestions.questions.get(numberQuestion).answers.size(); i++) {
-                        s.add(listQuestions.questions.get(numberQuestion).answers.get(i).answerstring);
-                        if(listQuestions.questions.get(numberQuestion).answers.get(i).answerbool){
-                            rightAnswer=i;
-                        }
-                    }
-                    showRadioButtonDialog(s, v);
-                }
+
             }
         });
         return v;
